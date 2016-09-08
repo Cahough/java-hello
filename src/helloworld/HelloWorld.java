@@ -59,23 +59,4 @@ public class HelloWorld
         
         assert (true || (1/0 == 3)) == true;
     }
-    
-    void testInts()
-    {
-        assert Integer.MAX_VALUE == Math.pow(2, 31)-1;
-        assert Integer.MIN_VALUE == -Math.pow(2, 31);
-        assert Integer.MIN_VALUE -1 == Integer.MAX_VALUE;
-        assert Integer.MAX_VALUE + 1 == Integer.MIN_VALUE;
-        
-        int x = 3_000;
-        int y = 0xff_ff;
-        int z = 0b10_01;
-        
-        assert x == 3000;
-        assert y == 65535;
-        assert z == 9;
-        
-        assert 17/5 == 3;
-        assert ((double) 17)/((double) 5) == 3.4;
-    }
 }
