@@ -134,5 +134,13 @@ public class HelloWorld
         byte x = -1;
         //assert x == 0b1111_1111_1111_1111_1111_1111_1111_1111;
         assert x == (byte) 0b1111_1111;
+        int y = x;
+        assert y == -1;
+        assert 0b1111_1111_1111_1111_1111_1111_1111_1111 == (int) (byte) 0b1111_1111;
+    }
+    
+    void testLoop()
+    {
+        
     }
 }
