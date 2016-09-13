@@ -240,4 +240,53 @@ public class HelloWorld
             }
         }
     }
+    
+    int instanceValue = 0;
+    
+    void methodExample()
+    {
+        int localValue = 0;
+        instanceValue ++;
+        localValue ++;
+        println("I", instanceValue, "L", localValue);
+    }
+    
+    long factorial(int n)
+    {
+        if (n > 1)
+            return n*factorial(n-1);
+        else
+            return 1;
+    }
+    
+    void testFUnctions()
+    {
+        try (Close out = outExpect(
+                "I", 1, "L", 1, EOL,
+                "I", 2, "L", 1, EOL,
+                "I", 3, "L", 1, EOL
+                ))
+        {
+            methodExample();
+            methodExample();
+            methodExample();
+        }
+        
+        assert factorial(1) == 1;
+        assert factorial(5) == 120;
+    }
+    
+    void testString()
+    {
+        String hi = "hello"; // Strings are immutable in Java
+        assert hi.length() == 5;
+        assert hi.substring(1,3).equals("el"); // [x, y)
+        
+//        hi = hi + " world";
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append(hi);
+        sb.append(" world");
+        String hw = sb.toString();
+    }
 }
