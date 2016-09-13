@@ -141,6 +141,103 @@ public class HelloWorld
     
     void testLoop()
     {
+        // While
+        try (Close out = outExpect(0, EOL, 1, EOL, 2, EOL, 3, EOL)) 
+        {
+            int n = 4;
+            int i = 0;
+            while (i < n) 
+            {
+                println(i);
+                i++;
+            }
+        }
         
+        // While with continue
+        try (Close out = outExpect(0, EOL, 1, EOL, 3, EOL)) 
+        {
+            int n = 4;
+            int i = 0;
+            while (i < n) 
+            {
+                if (i == 2) { i++; continue; }
+                println(i);
+                i++;
+            }
+        }
+        
+        // While with break
+        try (Close out = outExpect(0, EOL, 1, EOL)) 
+        {
+            int n = 4;
+            int i = 0;
+            while (i < n) 
+            {
+                if (i == 2) break;
+                println(i);
+                i++;
+            }
+        }
+        
+        // For
+        try (Close out = outExpect(0, EOL, 1, EOL, 2, EOL, 3, EOL)) 
+        {
+            int n = 4;
+            for (int i = 0; i < n; i++)
+            {
+                println(i);
+            }
+        }
+        
+        // For with continue
+        try (Close out = outExpect(0, EOL, 1, EOL, 3, EOL)) 
+        {
+            int n = 4;
+            for (int i = 0; i < n; i++)
+            {
+                if (i == 2) continue;
+                println(i);
+            }
+        }
+        
+        // For with break
+        try (Close out = outExpect(0, EOL, 1, EOL)) 
+        {
+            int n = 4;
+            for (int i = 0; i < n; i++)
+            {
+                if (i == 2) break;
+                println(i);
+            }
+        }
+        
+        // Loops with Strings
+        String [] words = new String[] {"this", "that", "other"};
+        assert words[0].equals("this");
+        assert words[1].equals("that");
+        assert words[2].equals("other");
+        assert words.length == 3;
+        
+        String [] nouns = new String[3];
+        assert nouns[0] == null;
+        assert nouns[1] == null;
+        assert nouns[2] == null;
+        assert nouns.length == 3;
+        
+        try (Close out = outExpect("this", EOL, "that", EOL, "other", EOL)) 
+        {
+            for (int i = 0; i < words.length; i++) 
+            {
+                println(words[i]);
+            }
+        }
+        
+        try (Close out = outExpect("this", EOL, "that", EOL, "other", EOL))
+        {
+            for (String word : words)
+            {
+                println(word);
+            }
+        }
     }
 }
