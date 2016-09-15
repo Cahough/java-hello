@@ -289,4 +289,9 @@ public class HelloWorld
         sb.append(" world");
         String hw = sb.toString();
     }
+    
+    void testClock()
+    {
+        Clock clock = test(new Clock());
+    }
 }
